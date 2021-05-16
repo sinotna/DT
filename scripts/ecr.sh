@@ -1,17 +1,10 @@
 #!/#bin/bash
-#create a list with all the repo names
-#
-#aws ecr describe-repositories --profile homeos-aws-prd  | grep repositoryName | awk '{print$2}' | sed -e s/\"//g -e s/,//g
-#
-#create a dictionary with the repo name and the latest image
-#aws ecr describe-images --profile homeos-aws-prd  --repository-name homeos-ara --query 'sort_by(imageDetails,& imagePushedAt)[-1]'
-#check for common images and include them only once
-#create a list with the images that have valnerabiliteis
-#list the varnelability of the images
+
 export AWS_PROFILE=homeos-aws-prd
 repo_names=(`aws ecr describe-repositories --profile homeos-aws-prd  | grep repositoryName | awk '{print$2}' | sed -e s/\"//g -e s/,//g`)
 repo_with_findings=()
-repo_failed_scans=()§
+repo_failed_scans=()
+
 #findings=`aws ecr describe-images --profile homeos-aws-prd --repository-name $i --query 'sort_by(imageDetails,& imagePushedAt)[-1]'  | grep findingSeverityCounts | awk '{print$2}'`
 for i in "${repo_names[@]}"
 do
@@ -20,6 +13,12 @@ result=`aws ecr describe-images --profile homeos-aws-prd  --repository-name $i -
 if [[ $result == "{" ]]
 then
     repo_with_findings+=($i)
+    findings=`aws ecr describe-images --profile homeos-aws-prd  --repository-name $i --query 'sort_by(imageDetails,& imagePushedAt)[-1]' | jq {imageScanFindingsSummary}`
+    echo "###################################" >> ./Vulnerabilities
+    echo "Repo name: $i"  >> ./Vulnerabilities
+    echo "$findings"  >> ./Vulnerabilities
+    echo "___________________________________" >> ./Vulnerabilities
+
 elif  [[ $result != "{}" ]]
 then
     repo_failed_scans+=($i)
@@ -30,5 +29,4 @@ echo "all_repos=${#repo_names[@]}"
 echo "repo_with_findings=${#repo_with_findings[@]}"
 echo "failed scanned repos=${#repo_failed_scans[@]}"
 echo ${repo_names[@]} | sed 's/ /\n/g' > repo_names.txt
-echo ${repo_with_findings[@]}| sed 's/ /\n/g' > repo_with_findings.txt
 echo ${repo_failed_scans[@]} | sed 's/ /\n/g' > repo_failed_scans.txt
