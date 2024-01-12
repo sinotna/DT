@@ -26,3 +26,17 @@ AZURE
 Sandbox: dtit_cnd0002
 Preprod: dtit_cnp0001
 Prod:dtit_cnp0020
+
+
+Υπάρχουν services που τρέχουν στο AKS και άλλα σε VMS.
+
+Service
+-Sentry : το χρησιμοπειούν οι devs.
+-qberd : είναι το smarthome application (legacy)
+    - MPS : messaging proxy service επιτρέπει στα gateway devices που βρίσκονται στα σπίτια των πελατών να μιλάνε με το smarthome στο Azure.  
+-ISTIO : Mesh encrypstion + ingress
+-NGINX Ingress : Χρησιμοποιήται και αυτό παράλληλα με το istio ingress. 
+
+
+Terraform. 
+όλα τα envs τρέχουν με pipelines. υπάρχουν docker images με TF και parsaρονται οι εντολές στα docker. Στο pipeline θα πάρουμε το output.
