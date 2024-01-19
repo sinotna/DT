@@ -40,3 +40,13 @@ Service
 
 Terraform. 
 όλα τα envs τρέχουν με pipelines. υπάρχουν docker images με TF και parsaρονται οι εντολές στα docker. Στο pipeline θα πάρουμε το output.
+
+
+--- KRUM ---
+Secrets management.
+We are using azure key vault.  
+
+
+Deploy to production we are creating a new git tag.
+
+ARGOCD is deploying only ISTIO and some DEV applications.
