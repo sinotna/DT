@@ -54,3 +54,14 @@ We are using azure key vault.
 Deploy to production we are creating a new git tag.
 
 ARGOCD is deploying only ISTIO and some DEV applications.
+
+---CMP Project---
+Phoenix CMP is responsible for upgrading images or factory reset. 
+https://gitlab.devops.telekom.de/mhe/cloud/mza/gateway/phoenix-cmp/-/jobs/148657630
+This project is using kustomize instead of helm chart. 
+
+Το μόνο που έχουμε να αλλάξουμε το version του image και το κάνουμε push. και πάμε στο pipeline για να τρέξουμε στο env που θέλουμε.
+
+azure data studio
+
+
