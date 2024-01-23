@@ -5,9 +5,13 @@ MZA - SMARTHOME
 
 TODO: να βρω το κατάλληλο azure training.
 
-*Smarthome: είναι το παλιό και επικοινωνέι με τους routers/devices των πελατών με παλιά πρωτόκολλα επικοινηνωνίας. Σε αυτό το hardware θα συνδεθούν όλες οι smart συσκευύες.
+*Smarthome: είναι το παλιό και επικοινωνέι με τους routers/devices των πελατών με παλιά πρωτόκολλα επικοινηνωνίας. Σε αυτό το hardware/gateway θα συνδεθούν όλες οι smart συσκεύες. Ειναι dedicated device με το δικό του firmware. έχει και smart application.
 
-MAGENTA ZU HAUSE : νέα προτόκολλα είναι το νέο. 
+Τα πρωτοκόλλα με την επικοινωνία των smart devices που θα πρέπει να ήταν συμβατα με το smarthome.
+
+MAGENTA ZU HAUSE : Μιλάει με το cloud api των εταιριων (philps,xiaomi,soofon...) έτσι μπορεί να υποστιρίξει πολλές συσκευές. δε χρειάζεται gateway/dedicated device όπως το smarthome. 
+
+Ακριβώς όπως το google home.
 
 
 
