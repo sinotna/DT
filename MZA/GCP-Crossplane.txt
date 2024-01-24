@@ -1,0 +1,4 @@
+Ask puddy/Niko if we can use the crossplane of central team. Ask Niko/puddy
+One option is to create a basic terraform installation on GCP and then move to 
+
+Create the story for crossplane / GCP / Use the homeos tempalte.
