@@ -71,3 +71,16 @@ azure data studio
 *For docker in docker we have to add this: https://gitlab.devops.telekom.de/mhe/cicd/work-horse/image/-/blob/3cfe0e7871c7fcf979c9f339ad129d363d06beac/.gitlab-ci.yml#L39-39*
 
 Replace only the Virtual machines runners. Ask Dau and Ralf
+
+Gitlab runners uses sysbox
+Our runners are using docker service. 
+
+*Use gitlab runners as much as possibe.*
+
+- We are using our runners because of authorization. e.g. We are passing the credentials for accessing azure etc.
+- We are using our runners for docker in docker
+
+
+## CICD Global pipeline
+https://gitlab.devops.telekom.de/mhe/cloud/cicd
+Used for Java,Cotlin...
