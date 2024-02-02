@@ -65,3 +65,9 @@ This project is using kustomize instead of helm chart.
 azure data studio
 
 
+## Pipelines and Runnes
+
+*Information about the runners https://docs.devops.telekom.de/*
+*For docker in docker we have to add this: https://gitlab.devops.telekom.de/mhe/cicd/work-horse/image/-/blob/3cfe0e7871c7fcf979c9f339ad129d363d06beac/.gitlab-ci.yml#L39-39*
+
+Replace only the Virtual machines runners. Ask Dau and Ralf
