@@ -22,15 +22,15 @@ list_projects_in_group() {
     local subgroups=$(curl --silent --header "Private-Token:$GITLAB_ACCESS_TOKEN" "https://gitlab.devops.telekom.de/api/v4/groups/$group_id/subgroups" | jq -r '.[].id')
 
     # Recursively list projects and their tags in subgroups
-    for project in $projects_ids; do
- # change this with id instead of name
- >>>>>       local project_id=$(curl --silent --header "Private-Token:$GITLAB_ACCESS_TOKEN" "https://gitlab.devops.telekom.de/api/v4/groups/$group_id/projects?search=$project" | jq -r '.[] | select(.name == "'"$project"'") | .id')
-        local gitlab_ci_file=$(curl --silent --header "Private-Token:$GITLAB_ACCESS_TOKEN" "https://gitlab.devops.telekom.de/api/v4/projects/$project_id/repository/files/.gitlab-ci.yml/raw")
-        local tag=$(echo "$gitlab_ci_file" | jq -r '. | select(.tags) | .tags | join(", ")')
-        
-        echo "Tags for project \"$project\":"
-        echo "$tag"
-    done
+ #   for project in $projects_ids; do
+ ## change this with id instead of name
+ #>>>>>       local project_id=$(curl --silent --header "Private-Token:$GITLAB_ACCESS_TOKEN" "https://gitlab.devops.telekom.de/api/v4/groups/$group_id/projects?search=$project" | jq -r '.[] | select(.name == "'"$project"'") | .id')
+ #       local gitlab_ci_file=$(curl --silent --header "Private-Token:$GITLAB_ACCESS_TOKEN" "https://gitlab.devops.telekom.de/api/v4/projects/$project_id/repository/files/.gitlab-ci.yml/raw")
+ #       local tag=$(echo "$gitlab_ci_file" | jq -r '. | select(.tags) | .tags | join(", ")')
+ #       
+ #       echo "Tags for project \"$project\":"
+ #       echo "$tag"
+ #   done
 
     # Recursively list projects and their tags in subgroups
     for subgroup_id in $subgroups; do
