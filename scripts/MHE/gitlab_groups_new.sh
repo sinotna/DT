@@ -7,7 +7,7 @@ group_id=41110
 
 
 
-
+# List project inside a subgroup, search for any gitlab-ci file and search the tag fields.
 
 list_projects () {
     
@@ -20,14 +20,30 @@ list_projects () {
     echo "Project name: $project_name - Project id: $project_id"
     for files in $(curl --silent --header "Private-Token:$GITLAB_ACCESS_TOKEN" "https://gitlab.devops.telekom.de/api/v4/projects/$project_id/repository/tree?recursive=true" | jq -r '.[].path')
         do
-        if echo "$files" | grep gitlab-ci;
-            then    
-            echo "$files"
+        if echo "$files" | grep gitlab-ci.yml;
+            then
+            # Encode the file path for use in the API URL
+            echo "gitlab-ci file: $files"
+            local encoded_file_path=$(printf "%s" "$files" | jq -s -R -r @uri)
+            local gitlabci_content=$(curl --silent --header "Private-Token:$GITLAB_ACCESS_TOKEN" "https://gitlab.devops.telekom.de/api/v4/projects/$project_id/repository/files/$encoded_file_path/raw")
+            if echo "$gitlabci_content" | grep 'tags';
+                then
+                echo "tags found"
+                else
+                echo "tags not there"
             fi
+        fi
     done
 }
 
-list_projects "$group_id" 
+#list_projects "$group_id" 
+#
+## List all groups and subgroups unde mhe
+#
+#list_subgroups ()  {
+#
+#    local subgroup_id="$1"
+#}
 
 #
 #
