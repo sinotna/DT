@@ -20,8 +20,11 @@ list_projects () {
     echo "Project name: $project_name - Project id: $project_id"
     for files in $(curl --silent --header "Private-Token:$GITLAB_ACCESS_TOKEN" "https://gitlab.devops.telekom.de/api/v4/projects/$project_id/repository/tree?recursive=true" | jq -r '.[].path')
         do
-        echo $files
-        done
+        if echo "$files" | grep gitlab-ci;
+            then    
+            echo "$files"
+            fi
+    done
 }
 
 list_projects "$group_id" 
