@@ -2,10 +2,6 @@
 group_name=mhe
 group_id=41110
 #group_id=114707
-#1. list groups id of subgroups
-#2. check if the id is subgroup or project
-#3. if it project create a file with the project name and paste inside the only the group runners
-
 
 
 # List project inside a subgroup, search for any gitlab-ci file and search the tag fields.
@@ -20,7 +16,7 @@ list_projects () {
     done <<< "$project_url"
     for i in ${project_url_array[@]}
         do
-            git clone $i
+            git clone  --depth 1 $i # Shallow clone. Clone only the latest commit.
         done
 }
 
@@ -48,4 +44,3 @@ list_subgroups ()  {
 }
 
 list_subgroups "$group_id"
-#list_projects "$group_id" 
