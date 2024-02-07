@@ -20,7 +20,7 @@ list_projects () {
     done <<< "$project_url"
     for i in ${project_url_array[@]}
         do
-        echo $i
+        git clone $i
         done
 }
 
@@ -41,7 +41,6 @@ list_subgroups ()  {
     ###
     for i in ${subgroups_id_array[@]}
         do
-        echo $i
         list_subgroups $i        
         done
 }
