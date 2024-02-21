@@ -61,7 +61,10 @@ https://gitlab.devops.telekom.de/mhe/cloud/mza/gateway/phoenix-cmp/-/jobs/148657
 This project is using kustomize instead of helm chart. 
 
 Το μόνο που έχουμε να αλλάξουμε το version του image και το κάνουμε push. και πάμε στο pipeline για να τρέξουμε στο env που θέλουμε.
-Relevan Jira ticket:
+Φτιάχνουμε ένα branch και ζητάμε να μας το κάνουν apparove.
+Slack Request: https://consumeriot.slack.com/archives/C045YTXQAQ3/p1708512039285899?thread_ts=1708426991.961659&cid=C045YTXQAQ3
+Gitlab Repo file: https://gitlab.devops.telekom.de/mhe/cloud/mza/gateway/phoenix-cmp/-/blob/master/control-center/resources/kustomization.yaml?ref_type=heads#L19
+GitLab MR: https://gitlab.devops.telekom.de/mhe/cloud/mza/gateway/phoenix-cmp/-/merge_requests/9
 
 azure data studio
 
