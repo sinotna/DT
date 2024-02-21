@@ -65,6 +65,11 @@ This project is using kustomize instead of helm chart.
 Slack Request: https://consumeriot.slack.com/archives/C045YTXQAQ3/p1708512039285899?thread_ts=1708426991.961659&cid=C045YTXQAQ3
 Gitlab Repo file: https://gitlab.devops.telekom.de/mhe/cloud/mza/gateway/phoenix-cmp/-/blob/master/control-center/resources/kustomization.yaml?ref_type=heads#L19
 GitLab MR: https://gitlab.devops.telekom.de/mhe/cloud/mza/gateway/phoenix-cmp/-/merge_requests/9
+Someone has to approve and merge the MR. After that we have to run the pipeline: https://gitlab.devops.telekom.de/mhe/cloud/mza/gateway/phoenix-cmp/-/pipelines/26850734
+First we run the preprod-01-build then the preprod-01-sign and last the preprod-01-deploy.
+The next step is to verify. The upgrade can be verified by
+1. login in to the CMP UI and check for the version
+2. check in the K8S env.
 
 azure data studio
 
